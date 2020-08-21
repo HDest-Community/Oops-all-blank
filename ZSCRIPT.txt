@@ -1,0 +1,40 @@
+version "4.1"
+
+class OopsAllHandler : StaticEventHandler
+{
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		if (!e.Replacement)
+		{
+			return;
+		}
+
+		class<Actor> Replacement = oab_replacement;
+		if (Replacement)
+		{
+			switch (e.Replacee.GetClassName())
+			{
+				case 'Zombieman':
+				case 'ShotgunGuy':
+				case 'DoomImp':
+				case 'ChaingunGuy':
+				case 'Demon':
+				case 'Spectre':
+				case 'Revenant':
+				case 'LostSoul':
+				case 'Cacodemon':
+				case 'PainElemental':
+				case 'Arachnotron':
+				case 'Fatso':
+				case 'HellKnight':
+				case 'BaronOfHell':
+				case 'SpiderMastermind':
+				case 'Cyberdemon':
+				case 'WolfensteinSS':
+					e.Replacement = Replacement;
+					e.IsFinal = true;
+					break;
+			}
+		}
+	}
+}
