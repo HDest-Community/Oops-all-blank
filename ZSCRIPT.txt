@@ -28,8 +28,6 @@ class OopsAllHandler : StaticEventHandler
 				case 'Fatso':
 				case 'HellKnight':
 				case 'BaronOfHell':
-				case 'SpiderMastermind':
-				case 'Cyberdemon':
 				case 'WolfensteinSS':
 					e.Replacement = Replacement;
 					e.IsFinal = true;
