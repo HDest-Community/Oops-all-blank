@@ -4,4 +4,4 @@
 
 ### Notes
 ---
-- Yokais are excluded from this.
+- Yokais, bosses, and Archviles are excluded from this.
