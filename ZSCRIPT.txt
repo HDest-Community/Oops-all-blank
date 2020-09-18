@@ -9,29 +9,46 @@ class OopsAllHandler : StaticEventHandler
 			return;
 		}
 
-		class<Actor> Replacement = oab_replacement;
-		if (Replacement)
+		string RawString = oab_replacement;
+		RawString.Replace(" ", "");
+		
+		Array<string> Replacements;
+		RawString.Split(Replacements, ";");
+
+		int RepSize = Replacements.Size();
+		if (RepSize == 0)
 		{
-			switch (e.Replacee.GetClassName())
+			Replacements.Push(RawString);
+			RepSize++;
+		}
+
+		for (int i = 0; i < 5; ++i)
+		{
+			class<Actor> Replacement = Replacements[random(0, RepSize - 1)];
+			if (Replacement)
 			{
-				case 'Zombieman':
-				case 'ShotgunGuy':
-				case 'DoomImp':
-				case 'ChaingunGuy':
-				case 'Demon':
-				case 'Spectre':
-				case 'Revenant':
-				case 'LostSoul':
-				case 'Cacodemon':
-				case 'PainElemental':
-				case 'Arachnotron':
-				case 'Fatso':
-				case 'HellKnight':
-				case 'BaronOfHell':
-				case 'WolfensteinSS':
-					e.Replacement = Replacement;
-					e.IsFinal = true;
-					break;
+				switch (e.Replacee.GetClassName())
+				{
+					case 'Zombieman':
+					case 'ShotgunGuy':
+					case 'DoomImp':
+					case 'ChaingunGuy':
+					case 'Demon':
+					case 'Spectre':
+					case 'Revenant':
+					case 'LostSoul':
+					case 'Cacodemon':
+					case 'PainElemental':
+					case 'Arachnotron':
+					case 'Fatso':
+					case 'HellKnight':
+					case 'BaronOfHell':
+					case 'WolfensteinSS':
+						e.Replacement = Replacement;
+						e.IsFinal = true;
+						break;
+				}
+				break;
 			}
 		}
 	}
